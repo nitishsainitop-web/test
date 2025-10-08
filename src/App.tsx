@@ -1,7 +1,29 @@
-import AppRoutes from "./routes/AppRoutes";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
-  return <AppRoutes />;
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Login from "./pages/Login";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* ✅ Routes using MainLayout (Header + Footer) */}
+        <Route
+          path="/"
+          element={
+              <Home />
+          }
+        />
+        <Route
+          path="/about"
+          element={
+              <About />
+          }
+        />
+        {/* ✅ Route without layout */}
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App;

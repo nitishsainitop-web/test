@@ -2,4 +2,88 @@
 
 @theme {
   --color-brand: #01090f;
+  --color-brandGreen: #8fe020;
+}
+/* styles/logo-marquee.css */
+.logo-marquee-container {
+  overflow: hidden;
+  background: white;
+  padding: 0;
+  position: relative;
+}
+
+.logo-marquee-track {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  animation: logo-scroll-left-to-right 30s linear infinite;
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.logo-image {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: all 0.3s ease-in-out;
+}
+
+.logo-image:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+/* Special treatment for white logos */
+.logo-item-white {
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.logo-image-white {
+  height: 35px;
+  filter: grayscale(100%) contrast(1.2) brightness(0.7);
+  padding: 4px;
+}
+
+.logo-image-white:hover {
+  filter: grayscale(0%) contrast(1) brightness(1);
+}
+
+/* Dark mode treatment for white logos - alternative approach */
+.logo-item-dark {
+  background: linear-gradient(to bottom, #001018, #011f2f);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+}
+
+.logo-image-dark {
+  height: 35px;
+  filter: brightness(0) invert(1) grayscale(100%) opacity(0.8);
+}
+
+.logo-image-dark:hover {
+  filter: brightness(0) invert(1) grayscale(0%) opacity(1);
+}
+
+/* Left to Right Animation */
+@keyframes logo-scroll-left-to-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Pause on hover */
+.logo-marquee-container:hover .logo-marquee-track {
+  animation-play-state: paused;
 }
